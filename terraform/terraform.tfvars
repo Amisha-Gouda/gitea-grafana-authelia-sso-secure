@@ -1,0 +1,5 @@
+key_name        = "setup"
+public_key_path = "C:/Users/LENOVO/.ssh"
+instance_type = "t2.micro"
+ami_id = "ami-0953476d60561c955"
+private_key_path = "C:\\Users\\LENOVO\\.ssh\\setup.pem"
