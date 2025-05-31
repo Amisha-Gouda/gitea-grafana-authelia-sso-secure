@@ -124,3 +124,7 @@ To access services via custom domain names, add these entries to your `/etc/host
 - Accessible at `http://authelia.mytest.local`
 ![alt text](images/image-10.png)
 ![alt text](images/image-11.png)
+
+## Need Help?
+
+If you encounter any issues during setup or usage, please refer to the [Troubleshooting Guide](./troubleshooting.md) for common problems and solutions.
