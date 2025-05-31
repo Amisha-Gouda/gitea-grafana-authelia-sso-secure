@@ -16,7 +16,7 @@ This project sets up a **secure, containerized Git service (Gitea)**, **monitori
 ---
 
 ## Architecture Overview
-
+![alt text](images/image-1.png)
 
 ---
 
@@ -99,27 +99,27 @@ To access services via custom domain names, add these entries to your `/etc/host
 
 ### 7. Results:
 
-## 7.1 Gitea 
+#### 7.1 Gitea 
 - Access via `http://gitea.mytest.local`
 - Protected by SSO via Authelia
 ![alt text](images/image-2.png)
 - Hosted Git repositories
 ![alt text](images/image-9.png)
 
-## 7.2 Grafana
+#### 7.2 Grafana
 - Access via `http://grafana.mytest.local`
 - Protected by SSO via Authelia
 ![alt text](images/image-4.png)
 - Real-time monitoring of system health
 ![alt text](images/image-5.png)
-![alt text](image-12.png)
+![alt text](images/image-12.png)
 - Integrated Loki data source for log streaming
 ![alt text](images/image-6.png)
 - Gitea and Authelia monitoring dashboards
 ![alt text](images/image-7.png)
 ![alt text](images/image-8.png)
 
-### 7.3 Authelia SSO
+#### 7.3 Authelia SSO
 - Handles authentication for Gitea and Grafana
 - Accessible at `http://authelia.mytest.local`
 ![alt text](images/image-10.png)
