@@ -1,13 +1,3 @@
-terraform {
-  backend "s3" {
-    bucket         = "terraform-files-dev09"
-    key            = "terraform.tfstate"
-    region         = "us-east-1"
-    encrypt        = true
-  }
-}
-
-
 provider "aws" {
   region = var.region
 }
