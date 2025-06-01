@@ -75,7 +75,26 @@ Before running Terraform, you need to configure your AWS credentials using an Ac
 2.2 Then configure using: aws configure
 ```
 
-### 4. Provision Infrastructure (Terraform)
+### 4. Before initializing Terraform, we’ll create an S3 bucket to hold the Terraform state file.
+#### 4.1 Create the S3 Bucket via AWS CLI
+```bash
+aws s3api create-bucket \
+  --bucket <your-bucket-name> \
+  --region <your-region>
+```
+#### 4.2 Then ensure your terraform/backend.tf is updated with your S3 bucket. It should look like this:
+```bash
+terraform {
+  backend "s3" {
+    bucket         = <your-bucket-name>
+    key            = "terraform.tfstate"
+    region         = <your-region>
+    encrypt        = true
+  }
+}
+```
+
+### 5. Provision Infrastructure (Terraform)
 
 ```bash
 cd terraform
@@ -84,29 +103,29 @@ terraform plan
 terraform apply
 ```
 
-### 5. Local DNS Configuration
+### 6. Local DNS Configuration
 ```bash
 To access services via custom domain names, add these entries to your `/etc/hosts` file:
 <your-ec2-ip>   gitea.mytest.local grafana.mytest.local authelia.mytest.local
 ```
 
-### 6. Access URLS
+### 7. Access URLS
 ```bash
 🌐 Gitea: http://gitea.mytest.local
 📊 Grafana: http://grafana.mytest.local
 🔐 Authelia: http://authelia.mytest.local
 ```
 
-### 7. Results:
+### 8. Results:
 
-#### 7.1 Gitea 
+#### 8.1 Gitea 
 - Access via `http://gitea.mytest.local`
 - Protected by SSO via Authelia
 ![alt text](images/image-2.png)
 - Hosted Git repositories
 ![alt text](images/image-9.png)
 
-#### 7.2 Grafana
+#### 8.2 Grafana
 - Access via `http://grafana.mytest.local`
 - Protected by SSO via Authelia
 ![alt text](images/image-4.png)
@@ -119,7 +138,7 @@ To access services via custom domain names, add these entries to your `/etc/host
 ![alt text](images/image-7.png)
 ![alt text](images/image-8.png)
 
-#### 7.3 Authelia SSO
+#### 8.3 Authelia SSO
 - Handles authentication for Gitea and Grafana
 - Accessible at `http://authelia.mytest.local`
 ![alt text](images/image-10.png)
